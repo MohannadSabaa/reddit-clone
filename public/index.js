@@ -12,21 +12,26 @@ const password = document.querySelector('.password');
 let status = 0;
 document.addEventListener('DOMContentLoaded', async () => {
     
-    if(document.getElementById('home')) { 
+if(document.getElementById('home')) { 
+
     const resp = await fetch('/api/v1/posts');
     const result = await resp.json();
    result.forEach(p => postsContainer.append(publicPosts(p)))
-
-    postsContainer.addEventListener('click', async  (e) => {
-        const postBox = e.target.closest('.post-box');
-        const id = postBox.id;
-        const votes = postBox.querySelector('.votes');
-    
-        if(e.target.classList.contains('fa-arrow-up')) {
+   const loginResp = await fetch('/',{method: 'POST'});
+   if(loginResp.ok) {
+    status = 1;
+    showModalBtn.textContent = 'logout';
+       }
+   postsContainer.addEventListener('click', async  (e) => {
+       const postBox = e.target.closest('.post-box');
+       const id = postBox.id;
+       const votes = postBox.querySelector('.votes');
        
-        const resp = await fetch(`/api/v1/posts/inc/${id}`, {
-                method: 'PUT',
-                headers: {"Content-Type": "application/json"},
+       if(e.target.classList.contains('fa-arrow-up')) {
+           
+           const resp = await fetch(`/api/v1/posts/inc/${id}`, {
+               method: 'PUT',
+               headers: {"Content-Type": "application/json"},
             });
             
             if(resp.ok) {
@@ -36,10 +41,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             else {
                 modalHandler();
             }
-        
+            
         }
         if(e.target.classList.contains('fa-arrow-down')) {    
-        const resp = await fetch(`/api/v1/posts/dec/${id}`, {
+            const resp = await fetch(`/api/v1/posts/dec/${id}`, {
                 method: 'PUT',
                 headers: {"Content-Type": "application/json"},
             });
@@ -50,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             else {
                 modalHandler();
             }
-        
+            
         }
         if(e.target.classList.contains('fa-rectangle-xmark')) {
             const resp = await fetch(`/api/v1/posts/${id}`, {
@@ -69,14 +74,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     })
     showModalBtn.addEventListener('click', async () => {
+    
         if(status === 0) {
             modalHandler();
             return;
-          }
+        }
         if(status === 1) {
             logoutHandler()
             status = 0;
-           
             showModalBtn.textContent = 'log in';
         }
     });
@@ -88,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({content: postContent.value})
         })
-       
+        
         if(resp.ok) {
             const resp = await fetch('/api/v1/posts');
             const result = await resp.json();
@@ -96,49 +101,55 @@ document.addEventListener('DOMContentLoaded', async () => {
             result.forEach(p => postsContainer.append(publicPosts(p)));
         }
         else {
-           modalHandler();
+            modalHandler();
         }
     })
     loginBtn.addEventListener('click', async (e) => {
         
-      e.preventDefault();
-      console.log(email.value, password.value)
-      const resp = await fetch('/login', {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({email: email.value, password: password.value})
-      });
-      const result = await resp.json();
-      if(resp.ok) {
-      
-        status = 1;
-        showModalBtn.textContent = 'log out';
-        modalHandler();
+        e.preventDefault();
+        console.log(email.value, password.value)
+        const resp = await fetch('/login', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({email: email.value, password: password.value})
+        });
+        const result = await resp.json();
+        if(resp.ok) {
+            
+            status = 1;
+            showModalBtn.textContent = 'log out';
+            modalHandler();
+            
+        }
         
-      }
-    
-      
+        
     })
     closeModal.addEventListener('click', modalHandler);
-    }    
-    if(document.getElementById('profile')) {
-        status = status
-        const params = new URL(document.location.href).searchParams;
-        if(params.has('id') && params.has('name')) {
-            const name = params.get('name');
-            const id = params.get('id');
-            document.title = `Reddit | ${name.toUpperCase()}`;
-            const resp = await fetch(`/api/v1/posts/${id}/${name}`);
-            const posts = await resp.json();
-            posts.forEach(p => userPosts.append(publicPosts(p)));
-            showModalBtn.addEventListener('click', async () => {
-                if(status === 0) {
+
+}    
+
+if(document.getElementById('profile')) {
+    const params = new URL(document.location.href).searchParams;
+    if(params.has('id') && params.has('name')) {
+        const name = params.get('name');
+        const id = params.get('id');
+        document.title = `Reddit | ${name.toUpperCase()}`;
+        const resp = await fetch(`/api/v1/posts/${id}/${name}`);
+        const posts = await resp.json();
+        posts.forEach(p => userPosts.append(publicPosts(p)));
+        const loginResp = await fetch('/',{method: 'POST'});
+        if(loginResp.ok) {
+         status = 1;
+         showModalBtn.textContent = 'logout';
+            }
+        showModalBtn.addEventListener('click', async () => {
+            if(status === 0) {
                     modalHandler();
-                  }
+                }
                 if(status === 1) {
                     logoutHandler()
                     status = 0;
-                  
+                    
                     showModalBtn.textContent = 'log in';
                 }
             });

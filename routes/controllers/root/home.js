@@ -14,7 +14,6 @@ const signUp = async (req, res) => {
 }
 
 const login = async (req, res) => {
-
 const {email, password} = req.body;
 if(!email || !password) {
   return res.status(403).json({message: 'email and password required'});
@@ -59,6 +58,12 @@ res.status(201).cookie('token', token).json({id})
   // }
 
 }
+
+const checkUser = async (req, res) => {
+  if(req.cookies.token)
+  res.status(200).send()
+  else res.status(403).send();
+}
 const logout = async(req, res) => {
   res.clearCookie('token').json({message: 'Logged out'})
 }
@@ -67,5 +72,5 @@ const error404 = async (req, res) => {
   res.status(404).sendFile(join(__dirname, '../../../view/error404.html'));
 }
 
-module.exports = {home, signUp, login, logout, profile, error404};
+module.exports = {home, signUp,checkUser, login, logout, profile, error404};
 
