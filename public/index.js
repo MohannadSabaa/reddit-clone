@@ -98,6 +98,7 @@ if(document.getElementById('home')) {
             const resp = await fetch('/api/v1/posts');
             const result = await resp.json();
             postsContainer.innerHTML = '';
+            postContent.value = '';
             result.forEach(p => postsContainer.append(publicPosts(p)));
         }
         else {

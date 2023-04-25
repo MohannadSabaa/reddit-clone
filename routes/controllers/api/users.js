@@ -13,9 +13,11 @@ const addNewUser = async(req, res) => {
     const {name, email, password} = req.body;
   
     const hashedPass = await bcrypt.hash(password, 10);
-    const user = await connection.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3)',[name, email, hashedPass]);
-    const result = await user.rows;
-    const token = await signToken({name, email});
+    const addquery = await connection.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3)',[name, email, hashedPass]);
+    const getUser = await connection.query('SELECT * FROM users WHERE email = $1',[email]);
+    const user = await getUser.rows[0];
+    console.log(user);
+    const token = await signToken({name, email, id: user.id});
 
 res.status(200).cookie('token', token).redirect('/');
 }
