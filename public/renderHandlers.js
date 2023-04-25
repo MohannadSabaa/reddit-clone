@@ -50,7 +50,7 @@ const publicPosts = ({id, name, title, content, created_at, votes, user_id}) => 
 const logoutHandler = async function() {
   const resp = await fetch('/logout');
   const result = await resp.json();
-  console.log(result)
+  
 }
  
   export {publicPosts, modalHandler, logoutHandler};
