@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js" type="module" defer></script>
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Reddit</title>
+</head>
+<body id="home">
+    <div class="back-drop hidden"></div>
+    <form  class="modal hidden">
+        <i class="fa-solid fa-circle-xmark fa-2x"></i>
+        <h1 class="Title">Log IN</h1>
+        <p class="UserAgreement">By continuing, you are setting up a Reddit account and agree to our User Agreement and Privacy Policy.</p>
+    <input type="text" name="email" placeholder="Email" class="email ">
+    <input type="text" name="password" placeholder="Password" class="password">
+    <button id ='login' class="btn">Log In</button>
+    <p class="register-link">New to Reddit? <a href="/register">Sign Up</a></p>
+   </form>
+    <nav>
+        <i class="fa-brands fa-reddit fa-2x" style="color: #fa7000;"></i>
+       <button  class="show-modal btn">Log In</button>
+    </nav>
+   <section class="trends">
+    <h1 class="hot-trends">Hot Trends</h1>
+    <div class="trends-box">
+        <img class='picsum' src="https://picsum.photos/200" alt="">
+        <img class='picsum' src="https://picsum.photos/200" alt="">
+        <img class='picsum' src="https://picsum.photos/200" alt="">
+        <img class='picsum' src="https://picsum.photos/200" alt="">
+    </div>
+    <div class="post-dashboard">
+        <input type="text" name="content" id="content" placeholder="write a post"> <button class="" id="add">Post</button></div>
+   </section>
+   
+    <section class="posts-container">
+    </section>
+</body>
+</html>

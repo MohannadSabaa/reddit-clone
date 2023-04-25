@@ -1,0 +1,213 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Poppins&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Noto+Sans&family=Poppins&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+   
+    font-family: 'Noto Sans', sans-serif;
+    background-color: #DAE0E6;
+}
+a {
+    text-decoration: none;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top:0;
+    left:0;
+    background-color: #FFFFFF;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 3;
+}
+.back-drop {
+    position: fixed;
+    top: 0;
+    left:0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.622);
+    z-index: 10;
+}
+.trends-box {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    
+}
+.picsum {
+    margin: 0 10px;
+    width: 144px;
+    border-radius: 4px;
+}
+.hot-trends {
+    margin: auto;
+    text-align: center;
+    font-size: 14px;
+    margin: 30px 0 10px 0;
+}
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    display: flex;
+    padding-top: 40px;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 500px;
+    border-radius: 7px;
+    background-color: white;
+    box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.089);
+    z-index: 12;
+    
+}
+.email, .password {
+    
+    outline-color:#ff4500;
+    width: 90%;
+    border: 1px solid rgba(0, 0, 0, 0.116);
+    margin-bottom: 10px;
+    padding: .7rem 5px;
+    border-radius: 100px;
+ 
+   
+}
+.Title {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+}
+.UserAgreement {
+    margin-bottom: 10px;
+    color: #1a1a1b;
+    font-family: "Noto Sans",sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+#login {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 90%;
+    padding: .7rem 5px;
+}
+.register-link{
+    color: #1a1a1b;
+    font-family: "Noto Sans",sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+.posts-container, .user-posts{
+    
+    padding: 20px 0 0 0;
+    width: 640px;
+    margin: auto;
+    max-height: 400px;
+}
+
+.post-content {
+    width: 600px;
+    margin: 10px 0;
+    text-align: justify;
+}
+.post-box {
+    
+    display: flex;
+    gap: 0 10px;
+    background-color: #FFFFFF;
+    margin-bottom: 10px;
+    padding: 5px 10px 5px 0;
+}
+.post-card {
+    position: relative;
+}
+.fa-rectangle-xmark {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 20px;
+}
+.votes-box {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 40px;
+   text-align: center;
+  
+   height: 100%;
+
+    
+}
+.post-dashboard {
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: 640px;
+    margin-top: 10px;
+}
+#content {
+    outline-color: #1a1a1b1a;
+    padding: 1rem;
+    width: 80%;
+    border: 1px solid rgba(0, 0, 0, 0.048);
+    border-right: transparent;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+#add {
+   
+    background-color: none;
+    border: 1px solid rgba(0, 0, 0, 0.142);
+    width: 10%;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.fa-circle-xmark {
+position: absolute;
+top: 10px;
+right: 10px;
+}
+.fa-arrow-down, .fa-arrow-up {
+    font-size: 23px;
+}
+/* .votes-box ::after {
+position: absolute;
+top: 20px;
+left: 0;
+width: 20px;
+height: 20px;
+content: 'votes';
+font-size: 13px;
+} */
+.post-content {
+    font-size: 14px;
+}
+.btn {
+border:none;
+padding: .3rem .7rem;
+background-color: #ff4500;
+font-size: 14px;
+font-weight:bolder;
+color: white;
+border-radius: 9999px;
+width: 80px;
+}
+.hidden {
+    display: none;
+}

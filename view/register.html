@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js" type="module" defer></script>
+    <link rel="stylesheet" href="css/register.css">
+    <title>reddit.com | Register</title>
+</head>
+<body>
+<div class="main-section">
+    <div class="sidebar-image"></div>
+    <div class="form-section"> 
+        <h4>Sign up</h4>
+        <p>By continuing, you agree to our <a href="#">User Agreementand</a> and <a href="#">Privacy Policy</a>.</p>
+       <form action="/api/v1/users" method="POST">
+        <input type="text" name ="name" id="name" placeholder="CHOOSE A USERNAME">
+        <input type="text" name="email" placeholder="EMAIL" id="email">
+        <input type="text" name="password" placeholder="PASSWORD" id="password">
+        <button id ='register'>SIGN UP!</button>
+        <p>Forgot your <a href="#">username</a> or <a href="#">password?</a></p>
+        <p>New to Reddit? <a href="#">SIGN UP</a></p>
+    </div>
+        
+</div>
+  
+
+   </form>
+   
+   
+</body>
+</html>
