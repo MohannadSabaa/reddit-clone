@@ -64,9 +64,11 @@ if(document.getElementById('home')) {
             })
             const result = await resp.json();
             if(resp.ok) {
+                const resp = await fetch('/api/v1/posts');
                 const result = await resp.json();
-                console.log(result)
-                // votes.textContent = result[0].votes;
+                postsContainer.innerHTML = '';
+                result.forEach(p => postsContainer.append(publicPosts(p)))
+                
             }
             else {
                 modalHandler();
