@@ -56,7 +56,6 @@ const publicPosts = ({id, name, title, content, created_at, votes, user_id}) => 
     arrowDown.className = "fa-sharp fa-solid fa-arrow-down ";
     const userAnchor = document.createElement('a');
     userAnchor.href = `#`;
-    userAnchor.setAttribute('data-ref', user_id)
     const votesEl = document.createElement('span');
     votesEl.classList.add('votes');
     votesEl.textContent = votes

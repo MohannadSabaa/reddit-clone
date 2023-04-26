@@ -125,7 +125,7 @@ nav {
     text-align: justify;
 }
 .post-box {
-    
+    position: relative;
     display: flex;
     gap: 0 10px;
     background-color: #FFFFFF;
@@ -230,6 +230,32 @@ width: 80px;
     .picsum {
         width: 120px;
     }
+    }
+    .message {
+        position: relative;
+        background-color: #e9eaeb;
+        color:#ae120d;
+        border-radius: 4px;
+        position: absolute;
+        padding: 5px;
+        top: -20px;
+        right: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.19);
+        z-index: 2;
+    }
+    .message::after {
+        position: absolute;
+        bottom: -6px;
+        right:5px;
+        content:'';
+        transform: rotate(140deg);
+        width: 10px;
+        height: 10px;
+        border-top: 1px solid rgba(0, 0, 0, 0.19);
+        border-right: 1px solid rgba(0, 0, 0, 0.19);
+        background-color: #e9eaeb;
+       z-index: 1;
+        
     }
 @media screen and (max-width:550px){
     .posts-container {

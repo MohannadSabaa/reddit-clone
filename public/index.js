@@ -71,7 +71,12 @@ if(document.getElementById('home')) {
                 
             }
             else {
-                modalHandler();
+            console.log(e.target)
+                const message = document.createElement('div');
+                message.classList.add('message');
+                message.textContent = result.message;
+                e.target.closest('.post-box').append(message);
+                setTimeout(() => message.classList.add('hidden'), 2000);
             }
         }
     })
@@ -149,11 +154,10 @@ if(document.getElementById('profile')) {
             if(status === 0) {
                     modalHandler();
                 }
-                if(status === 1) {
-                    logoutHandler()
-                    status = 0;
-                    
-                    showModalBtn.textContent = 'log in';
+            if(status === 1) {
+             logoutHandler()
+                status = 0;
+                showModalBtn.textContent = 'log in';
                 }
             });
             closeModal.addEventListener('click', modalHandler);

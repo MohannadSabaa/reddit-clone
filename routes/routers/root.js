@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {home, signUp, login,checkUser,logout, profile, error404} = require('../controllers/root/home');
-const {auth} = require ('../../middlewares/authorization');
-const logStateTracker = require('../../middlewares/LogStateTracker');
+
 
 
 router
