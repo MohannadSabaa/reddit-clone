@@ -52,8 +52,10 @@ const publicPosts = ({id, name, title, content, created_at, votes, user_id}) => 
     postBox.id = id;
     const postCard = document.createElement('div');
     postCard.classList.add('post-card');
-    const deletePostBtn = document.createElement('i');
-    deletePostBtn.className = "fa-regular fa-rectangle-xmark";
+    const deletePostBtn = document.createElement('span');
+    deletePostBtn.className = "material-symbols-outlined";
+    deletePostBtn.textContent = 'delete';
+    deletePostBtn.id = 'delete-btn';
     const votesbox = document.createElement('div');
     votesbox.classList.add('votes-box');
     const arrowUp = document.createElement('span');
