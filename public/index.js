@@ -1,5 +1,5 @@
 
-import { publicPosts, modalHandler, logoutHandler} from "./renderHandlers.js";
+import { publicPosts, modalHandler, logoutHandler, profilePosts} from "./renderHandlers.js";
 const postsContainer = document.querySelector('.posts-container');
 const userPosts = document.querySelector('.user-posts');
 const showModalBtn = document.querySelector('.show-modal');
@@ -139,7 +139,7 @@ if(document.getElementById('profile')) {
         document.title = `Reddit | ${name.toUpperCase()}`;
         const resp = await fetch(`/api/v1/posts/${id}/${name}`);
         const posts = await resp.json();
-        posts.forEach(p => userPosts.append(publicPosts(p)));
+        posts.forEach(p => userPosts.append(profilePosts(p)));
         const loginResp = await fetch('/',{method: 'POST'});
         if(loginResp.ok) {
          status = 1;
