@@ -1,5 +1,5 @@
 
-import { publicPosts, modalHandler, logoutHandler, profilePosts, messagesHandler} from "./renderHandlers.js";
+import { publicPosts, modalHandler, logoutHandler, profilePosts} from "./renderHandlers.js";
 const postsContainer = document.querySelector('.posts-container');
 const userPosts = document.querySelector('.user-posts');
 const showModalBtn = document.querySelector('.show-modal');

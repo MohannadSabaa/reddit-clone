@@ -12,5 +12,5 @@ router
 .get('/profile(.html)?', profile)
 .post('/login', login)
 .get('/logout', logout)
-// .all('/*', error404)
+.all('/*', error404)
 module.exports = router;
