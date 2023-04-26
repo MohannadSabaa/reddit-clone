@@ -186,15 +186,7 @@ right: 10px;
 .fa-arrow-down, .fa-arrow-up {
     font-size: 23px;
 }
-/* .votes-box ::after {
-position: absolute;
-top: 20px;
-left: 0;
-width: 20px;
-height: 20px;
-content: 'votes';
-font-size: 13px;
-} */
+
 .post-content {
     font-size: 14px;
 }
@@ -211,3 +203,58 @@ width: 80px;
 .hidden {
     display: none;
 }
+
+@media screen and (max-width:660px){
+    .posts-container {
+        width: 580px;
+    }
+    .post-box {
+        /* margin: auto; */
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        width: 580px;
+        margin-top: 10px;
+    }
+    .post-content {
+        font-size: 14px;
+        width: 90%;
+    }
+    .post-dashboard {
+        width: 580px;
+    }
+    .hot-trends {
+        width: 580px;
+    }
+    .picsum {
+        width: 120px;
+    }
+    }
+@media screen and (max-width:550px){
+    .posts-container {
+        width: 480px;
+    }
+    .post-box {
+        /* margin: auto; */
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        width: 480px;
+        margin-top: 10px;
+    }
+    .post-content {
+        font-size: 14px;
+        width: 90%;
+    }
+    .post-dashboard {
+        width: 480px;
+    }
+    .hot-trends {
+        width: 480px;
+    }
+    .picsum {
+        width: 100px;
+    }
+    }
