@@ -1,12 +1,12 @@
 const express = require('express');
-const { addNewUser, getUsers } = require('../controllers/api/users');
+const { getUsers } = require('../controllers/api/users');
 const { getUsersPosts, getUserPosts, addPost, deletePost, updatePostInc, updatePostDec } = require('../controllers/api/posts');
 const deletePostAuth = require('../../middlewares/deletePost');
 const { justAdmins, votesAuth } = require('../../middlewares/authorization');
 
 const router = express.Router();
 
-router.post('/users', addNewUser);
+
 router.get('/users', justAdmins ,getUsers);
 router.get('/posts', getUsersPosts);
 router.post('/posts',votesAuth,addPost);

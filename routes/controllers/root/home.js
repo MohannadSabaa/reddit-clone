@@ -1,9 +1,11 @@
 const {join} = require('path');
+const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const {signToken} = require('../../../utils/token');
+const schema = require('../../../utils/joi');
 const connection = require('../../../model/database');
 const home = async (req, res) => {
-  // const guestToken = jwt.sign({type: 'guest'},process.env.SECRET_KEY);
+ 
     res.status(200).sendFile(join(__dirname, '../../../view/index.html'));
     }
 const profile = async (req, res) => {
@@ -71,6 +73,26 @@ const logout = async(req, res) => {
 const error404 = async (req, res) => {
   res.status(404).sendFile(join(__dirname, '../../../view/error404.html'));
 }
+const addNewUser = async(req, res) => {
 
-module.exports = {home, signUp,checkUser, login, logout, profile, error404};
+  try {
+      const valid = await schema.validateAsync(req.body)
+  }
+  catch(e) {
+     res.send(e.message)
+  }
+  const {name, email, password} = req.body;
+if(name && email && password) {
+  const hashedPass = await bcrypt.hash(password, 10);
+  const addquery = await connection.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3)',[name, email, hashedPass]);
+  const getUser = await connection.query('SELECT * FROM users WHERE email = $1',[email]);
+  const user = await getUser.rows[0];
+  const token = await signToken({name, email, id: user.id});
+  res.status(200).cookie('token', token).redirect('/');
+}
+ 
+
+  
+}
+module.exports = {home, addNewUser, signUp,checkUser, login, logout, profile, error404};
 

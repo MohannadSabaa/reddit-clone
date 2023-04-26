@@ -1,7 +1,6 @@
 
 const jwt = require('jsonwebtoken');
 const connection = require('../model/database');
-require('express').urlencoded({extended: false})
 const deletePostAuth = async (req, res, next) => {
 try {
       const {id} = req.params;
