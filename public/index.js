@@ -62,19 +62,23 @@ if(document.getElementById('home')) {
                 method:'DELETE',
                 headers: {'Content-Type': 'application/json'},
             })
-            const result = await resp.json();
+            const delResult = await resp.json();
             if(resp.ok) {
-                const resp = await fetch('/api/v1/posts');
-                const result = await resp.json();
-                postsContainer.innerHTML = '';
-                result.forEach(p => postsContainer.append(publicPosts(p)))
+                const box = e.target.closest('.post-box');
+                const message = document.createElement('div');
+                message.classList.add('message-success');
+                message.textContent = delResult.message;
+                
+                setTimeout(() => {
+                    box.append(message);
+                    postsContainer.removeChild(box)}, 400)
+                setTimeout(() => message.classList.add('hidden'), 600);
                 
             }
             else {
-            console.log(e.target)
                 const message = document.createElement('div');
-                message.classList.add('message');
-                message.textContent = result.message;
+                message.classList.add('message-fail');
+                message.textContent = delResult.message;
                 e.target.closest('.post-box').append(message);
                 setTimeout(() => message.classList.add('hidden'), 2000);
             }

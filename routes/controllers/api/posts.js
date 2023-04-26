@@ -25,9 +25,8 @@ const addPost = async (req, res) => {
 }
 const deletePost = async (req, res) => {
     const {id} = req.params;
-    console.log(+id)
     const query = await connection.query('DELETE FROM posts WHERE id = $1', [+id]);
-    res.status(201).json({message: 'Post DELETED'});
+    res.status(201).json({message: 'Post deleted successfully'});
 }
 const updatePostInc = async (req, res) => {
     const {id} = req.params;
