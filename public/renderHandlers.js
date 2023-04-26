@@ -11,8 +11,6 @@ const publicPosts = ({id, name, title, content, created_at, votes, user_id}) => 
     deletePostBtn.className = "material-symbols-outlined";
     deletePostBtn.textContent = 'delete';
     deletePostBtn.id = 'delete-btn';
-    // const deletePostBtn = document.createElement('i');
-    // deletePostBtn.className = "fa-regular fa-rectangle-xmark";
     const votesbox = document.createElement('div');
     votesbox.classList.add('votes-box');
     const arrowUp = document.createElement('span');
