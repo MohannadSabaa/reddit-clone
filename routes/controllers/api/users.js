@@ -1,7 +1,6 @@
-const bcrypt = require('bcrypt');
-const {signToken} = require('../../../utils/token');
+
 const connection = require('../../../model/database');
-const schema = require('../../../utils/joi');
+
 
 const getUsers = async (req, res) => {
     const getData = await connection.query('SELECT * FROM users');
