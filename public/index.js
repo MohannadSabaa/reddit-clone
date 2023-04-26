@@ -1,5 +1,5 @@
 
-import { publicPosts, modalHandler, logoutHandler, profilePosts} from "./renderHandlers.js";
+import { publicPosts, modalHandler, logoutHandler, profilePosts, messagesHandler} from "./renderHandlers.js";
 const postsContainer = document.querySelector('.posts-container');
 const userPosts = document.querySelector('.user-posts');
 const showModalBtn = document.querySelector('.show-modal');
@@ -63,25 +63,16 @@ if(document.getElementById('home')) {
                 headers: {'Content-Type': 'application/json'},
             })
             const delResult = await resp.json();
-            if(resp.ok) {
-                const box = e.target.closest('.post-box');
-                const message = document.createElement('div');
-                message.classList.add('message-success');
-                message.textContent = delResult.message;
+            const box = e.target.closest('.post-box');
+            const message = document.createElement('div');
+            message.classList.add(`message-${resp.ok ? 'success' : 'fail'}`);
+            message.textContent = delResult.message;
+            box.append(message);
+            setTimeout(() => message.classList.add('hidden'), 600);
+            resp.ok ? 
+            setTimeout(() => postsContainer.removeChild(box), 400) : -1;
                 
-                setTimeout(() => {
-                    box.append(message);
-                    postsContainer.removeChild(box)}, 400)
-                setTimeout(() => message.classList.add('hidden'), 600);
-                
-            }
-            else {
-                const message = document.createElement('div');
-                message.classList.add('message-fail');
-                message.textContent = delResult.message;
-                e.target.closest('.post-box').append(message);
-                setTimeout(() => message.classList.add('hidden'), 2000);
-            }
+  
         }
     })
     showModalBtn.addEventListener('click', async () => {

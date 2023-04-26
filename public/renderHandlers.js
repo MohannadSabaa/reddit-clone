@@ -89,5 +89,14 @@ const logoutHandler = async function() {
   const result = await resp.json();
   
 }
+const messagesHandler = (e, message, duration) => {
+  const box = e.target.closest('.post-box');
+  const messageEl = document.createElement('div');
+  messageEl.classList.add('message-success');
+  messageEl.textContent = message;
+  box.append(messageEl);
+  setTimeout(() => messageEl.classList.add('hidden'), duration);
+  return box;
+}
  
-  export {publicPosts, modalHandler, logoutHandler, profilePosts};
+  export {publicPosts, modalHandler, logoutHandler, profilePosts, messagesHandler};
