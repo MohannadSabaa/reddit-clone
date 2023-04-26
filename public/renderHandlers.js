@@ -56,10 +56,14 @@ const publicPosts = ({id, name, title, content, created_at, votes, user_id}) => 
     deletePostBtn.className = "fa-regular fa-rectangle-xmark";
     const votesbox = document.createElement('div');
     votesbox.classList.add('votes-box');
-    const arrowUp = document.createElement('i');
-    arrowUp.className = "fa-sharp fa-solid fa-arrow-up ";
-    const arrowDown = document.createElement('i');
-    arrowDown.className = "fa-sharp fa-solid fa-arrow-down ";
+    const arrowUp = document.createElement('span');
+    arrowUp.className = "material-symbols-outlined";
+    arrowUp.textContent = 'keyboard_double_arrow_down';
+    arrowUp.id = 'vote-down'
+    const arrowDown = document.createElement('span');
+    arrowDown.className = "material-symbols-outlined";
+    arrowDown.textContent = 'keyboard_double_arrow_down';
+    arrowDown.id = 'vote-down'
     const userAnchor = document.createElement('a');
     userAnchor.href = `#`;
     const votesEl = document.createElement('span');
