@@ -6,7 +6,6 @@ router
 .post('/',checkUser)
 .get('/register(.html)?', signUp)
 .post('/register', addNewUser)
-.get('/register', signUp)
 .get('/profile(.html)?', profile)
 .post('/login', login)
 .get('/logout', logout)

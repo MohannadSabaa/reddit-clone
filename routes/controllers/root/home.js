@@ -62,9 +62,15 @@ res.status(201).cookie('token', token).json({id})
 }
 
 const checkUser = async (req, res) => {
-  if(req.cookies.token)
-  res.status(200).send()
-  else res.status(403).send();
+  if(req.cookies.token) {
+    const {token} = req.cookies;
+    const valid = await jwt.verify(token,process.env.SECRET_KEY);
+    console.log(valid)
+   valid ? res.status(200).json({message:'valid token'}) : res.status(403).send({message: 'unvalid token'});
+  }
+  else {
+    res.json({message: 'not a member'});
+  }
 }
 const logout = async(req, res) => {
   res.clearCookie('token').json({message: 'Logged out'})
@@ -75,13 +81,10 @@ const error404 = async (req, res) => {
 }
 const addNewUser = async(req, res) => {
 
-  try {
-      const valid = await schema.validateAsync(req.body)
-  }
-  catch(e) {
-     res.send(e.message)
-  }
-  const {name, email, password} = req.body;
+ 
+const valid = await schema.validateAsync(req.body)
+ 
+const {name, email, password} = req.body;
 if(name && email && password) {
   const hashedPass = await bcrypt.hash(password, 10);
   const addquery = await connection.query('INSERT INTO users (name, email, password) VALUES ($1, $2, $3)',[name, email, hashedPass]);
