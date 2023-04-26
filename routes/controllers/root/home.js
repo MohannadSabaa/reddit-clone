@@ -69,7 +69,7 @@ const checkUser = async (req, res) => {
    valid ? res.status(200).json({message:'valid token'}) : res.status(403).send({message: 'unvalid token'});
   }
   else {
-    res.json({message: 'not a member'});
+    res.status(403).json({message: 'not a member'});
   }
 }
 const logout = async(req, res) => {

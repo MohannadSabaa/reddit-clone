@@ -87,6 +87,7 @@ const modalHandler = async function () {
 const logoutHandler = async function() {
   const resp = await fetch('/logout');
   const result = await resp.json();
+  window.location.reload();
   
 }
 

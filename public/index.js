@@ -1,6 +1,7 @@
 
 import { publicPosts, modalHandler, logoutHandler, profilePosts} from "./renderHandlers.js";
 const postsContainer = document.querySelector('.posts-container');
+const postDashboard = document.querySelector('.post-dashboard');
 const userPosts = document.querySelector('.user-posts');
 const showModalBtn = document.querySelector('.show-modal');
 const addPostBtn = document.querySelector('#add');
@@ -20,6 +21,8 @@ if(document.getElementById('home')) {
    const loginResp = await fetch('/',{method: 'POST'});
    if(loginResp.ok) {
     status = 1;
+    
+    postDashboard.classList.toggle('hidden');
     showModalBtn.textContent = 'logout';
        }
    postsContainer.addEventListener('click', async  (e) => {
@@ -108,7 +111,6 @@ if(document.getElementById('home')) {
         }
     })
     loginBtn.addEventListener('click', async (e) => {
-        
         e.preventDefault();
         console.log(email.value, password.value)
         const resp = await fetch('/login', {
@@ -116,15 +118,12 @@ if(document.getElementById('home')) {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({email: email.value, password: password.value})
         });
-        const result = await resp.json();
         if(resp.ok) {
-            
             status = 1;
             showModalBtn.textContent = 'log out';
             modalHandler();
-            
+            window.location.reload();
         }
-        
         
     })
     closeModal.addEventListener('click', modalHandler);
