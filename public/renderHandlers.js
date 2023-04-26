@@ -58,7 +58,7 @@ const publicPosts = ({id, name, title, content, created_at, votes, user_id}) => 
     votesbox.classList.add('votes-box');
     const arrowUp = document.createElement('span');
     arrowUp.className = "material-symbols-outlined";
-    arrowUp.textContent = 'keyboard_double_arrow_down';
+    arrowUp.textContent = 'keyboard_double_arrow_up';
     arrowUp.id = 'vote-down'
     const arrowDown = document.createElement('span');
     arrowDown.className = "material-symbols-outlined";
