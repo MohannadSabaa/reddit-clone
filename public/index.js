@@ -30,8 +30,7 @@ if(document.getElementById('home')) {
        const id = postBox.id;
        const votes = postBox.querySelector('.votes');
        
-       if(e.target.classList.contains('fa-arrow-up')) {
-           
+       if(e.target.id === 'vote-up') {
            const resp = await fetch(`/api/v1/posts/inc/${id}`, {
                method: 'PUT',
                headers: {"Content-Type": "application/json"},
@@ -46,7 +45,7 @@ if(document.getElementById('home')) {
             }
             
         }
-        if(e.target.classList.contains('fa-arrow-down')) {    
+        if(e.target.id === 'vote-down') {    
             const resp = await fetch(`/api/v1/posts/dec/${id}`, {
                 method: 'PUT',
                 headers: {"Content-Type": "application/json"},
@@ -60,7 +59,7 @@ if(document.getElementById('home')) {
             }
             
         }
-        if(e.target.classList.contains('fa-rectangle-xmark')) {
+        if(e.target.id === 'delete-btn') {
             const resp = await fetch(`/api/v1/posts/${id}`, {
                 method:'DELETE',
                 headers: {'Content-Type': 'application/json'},
